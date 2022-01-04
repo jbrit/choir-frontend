@@ -25,7 +25,58 @@ function responsiveFontSizes({ sm, md, lg } : BreakPoints) {
 
 const FONT_PRIMARY = 'Public Sans, sans-serif';
 
-export const typography = {
+interface Typo {
+  fontWeight: number,
+  lineHeight: number,
+  fontSize: string,
+  '@media (min-width:600px)': {fontSize: string},
+  '@media (min-width:900px)': {fontSize: string},
+  '@media (min-width:1200px)': {fontSize: string}
+}
+
+interface Typo2 {
+  fontWeight: number,
+  lineHeight: number,
+  fontSize: string
+}
+
+interface Typo3 {
+  fontSize: string,
+  lineHeight: number
+}
+
+export interface TypographyType {
+  fontFamily: string,
+  fontWeightRegular: number,
+  fontWeightMedium: number,
+  fontWeightBold: number,
+  h1: Typo,
+  h2: Typo,
+  h3: Typo,
+  h4: Typo,
+  h5: Typo,
+  h6: Typo,
+  subtitle1: Typo2,
+  subtitle2: Typo2,
+  body1: Typo3,
+  body2: Typo3,
+  caption: Typo3,
+  overline: {
+    fontWeight: number,
+    lineHeight: number,
+    fontSize: string,
+    letterSpacing: number,
+    textTransform: string
+  },
+  button: {
+    fontWeight: number,
+    lineHeight: number,
+    fontSize: string,
+    textTransform: string
+  }
+}
+
+export const typography : TypographyType = {
   fontFamily: FONT_PRIMARY,
   fontWeightRegular: 400,
   fontWeightMedium: 600,

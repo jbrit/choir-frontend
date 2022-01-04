@@ -13,10 +13,10 @@ export default function Hero() {
       <Navbar/>
       <Grid sx={{minHeight: "90vh", alignItems: "center"}} container spacing={4}>
         <Grid item xs={12} md={6}>
-          <Typography sx={{fontWeight: "semibold"}} variant="h2" component="h1" gutterBottom>
+          <Typography variant="h1" component="h1" gutterBottom>
             Tabernacle of Psalms
           </Typography>
-          <Typography  variant="subtitle1" component="p" gutterBottom>
+          <Typography  variant="body1" component="p" mb={3} gutterBottom>
             A choir is made up of many voices, including yours and mine. If one by one all go silent then all that will be left are the soloists.
           </Typography>
           <Stack spacing={2} direction="row">

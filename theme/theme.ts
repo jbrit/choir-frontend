@@ -9,5 +9,5 @@ export const theme = createTheme({
     palette: customPalette as Palette,
     shadows: shadows as Shadows,
     shape,
-    typography
+    typography: typography as {}
 });
