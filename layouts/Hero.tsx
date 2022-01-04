@@ -11,7 +11,7 @@ export default function Hero() {
   return (
     <Container maxWidth="lg">
       <Navbar/>
-      <Grid sx={{minHeight: "500px", alignItems: "center"}} container spacing={4}>
+      <Grid sx={{minHeight: "90vh", alignItems: "center"}} container spacing={4}>
         <Grid item xs={12} md={6}>
           <Typography sx={{fontWeight: "semibold"}} variant="h2" component="h1" gutterBottom>
             Tabernacle of Psalms

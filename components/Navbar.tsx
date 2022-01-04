@@ -35,8 +35,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar sx={{background: "transparent", color: "black", boxShadow: "none", height: "10vh"}} position="static">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -133,7 +132,6 @@ const Navbar = () => {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
     </AppBar>
   );
 };
