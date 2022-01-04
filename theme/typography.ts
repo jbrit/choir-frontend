@@ -1,8 +1,15 @@
-function pxToRem(value) {
+
+function pxToRem(value : number) {
   return `${value / 16}rem`;
 }
 
-function responsiveFontSizes({ sm, md, lg }) {
+interface BreakPoints{
+  sm: number,
+  md: number,
+  lg: number
+}
+
+function responsiveFontSizes({ sm, md, lg } : BreakPoints) {
   return {
     '@media (min-width:600px)': {
       fontSize: pxToRem(sm)
@@ -18,7 +25,7 @@ function responsiveFontSizes({ sm, md, lg }) {
 
 const FONT_PRIMARY = 'Public Sans, sans-serif';
 
-const typography = {
+export const typography = {
   fontFamily: FONT_PRIMARY,
   fontWeightRegular: 400,
   fontWeightMedium: 600,
