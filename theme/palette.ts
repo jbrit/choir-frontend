@@ -107,7 +107,7 @@ export const customPalette = {
 };
 
 
-export interface Palette{
+export interface Palette {
   common: { black: '#000', white: '#fff' },
   primary: PaletteColor,
   secondary: PaletteColor,
