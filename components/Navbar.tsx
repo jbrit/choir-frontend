@@ -14,16 +14,8 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
-import { styled } from '@mui/system';
 
-const MyComponent = styled('div')({
-  color: 'darkslategray',
-  backgroundColor: 'aliceblue',
-  padding: 8,
-  borderRadius: 4,
-});
-
-const pages = ['Sign up', 'Login'];
+const pages = ['Register', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
@@ -95,52 +87,37 @@ const Navbar = () => {
               }}
             >
               <Box sx={{padding: "10px 10px 10px 0"}}>
-              {/* {pages.map((page) => ( */}
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link href="/">
-                    <a>
+              {pages.map((page, index) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Link passHref href={page.toLowerCase()}>
+                    <Box component="a" sx={{display: "flex", alignItems:"center"}} >
                       <Typography color="black" textAlign="center">
-                        Sign up
-                        <LoginIcon />
+                        {page}
                       </Typography>
-                    </a>
+                      {index === 1 && <LoginIcon />}
+                      {index === 0  && <PersonAddAltIcon />}
+                    </Box>
                   </Link>
                 </MenuItem>
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Link href="/">
-                    <a>
-                      <Typography color="black" textAlign="center">Login</Typography>
-                    </a>
-                  </Link>
-                </MenuItem>
-              {/* ))} */}
+              ))}
               </Box>
             </Menu>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {/* {pages.map((page) => ( */}
-              <Button
+            {pages.map((page, index) => (
+              <Button key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
-                <Link href="/">
-                  <a>
-                    <Typography fontWeight="600">Sign up</Typography>
-                  </a>
+                <Link passHref href={page.toLowerCase()}>
+                  <Box component="a" sx={{display: "flex", alignItems:"center"}} >
+                    <Typography fontWeight="600">{page}</Typography>
+                    {index === 1 && <LoginIcon />}
+                    {index === 0  && <PersonAddAltIcon />}
+                  </Box>
                 </Link>
               </Button>
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
-              >
-                <Link href="/">
-                  <a>
-                    <Typography fontWeight="600">Login</Typography>
-                    <LoginIcon />
-                  </a>
-                </Link>
-              </Button>
-            {/* ))} */}
+            ))}
           </Box>
 
           {/* <Box sx={{ flexGrow: 0 }}>

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -11,17 +12,21 @@ export default function Hero() {
   return (
     <Container maxWidth="lg">
       <Navbar/>
-      <Grid sx={{minHeight: "90vh", alignItems: "center"}} container spacing={4}>
+      <Grid sx={{minHeight: "90vh", alignItems: "center"}} pt={3} container spacing={4}>
         <Grid item xs={12} md={6}>
-          <Typography variant="h1" component="h1" gutterBottom>
+          <Typography color="primary" variant="h1" component="h1" mb={2} gutterBottom>
             Tabernacle of Psalms
           </Typography>
           <Typography  variant="body1" component="p" mb={3} gutterBottom>
             A choir is made up of many voices, including yours and mine. If one by one all go silent then all that will be left are the soloists.
           </Typography>
           <Stack spacing={2} direction="row">
-            <Button variant="contained">Register</Button>
-            <Button variant="outlined">Login</Button>
+            <Link href="/register">
+              <a>
+                <Button variant="contained">Register</Button>
+              </a>
+            </Link>
+            {/* <Button variant="outlined">Login</Button> */}
         </Stack>
         </Grid>
         <Grid item xs={12} md={6}>
