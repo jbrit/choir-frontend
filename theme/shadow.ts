@@ -1,7 +1,7 @@
 import { alpha } from '@mui/material/styles';
 import {customPalette} from './palette';
 
-const LIGHT_MODE = customPalette.grey[500];
+const COLOR = customPalette.grey[500];
 
 
 export type Shadows = [
@@ -65,4 +65,4 @@ const createShadow = (color: string) => {
   ];
 };
 
-export const shadows: string[] = createShadow(LIGHT_MODE);
+export const shadows: string[] = createShadow(COLOR);

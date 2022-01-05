@@ -7,13 +7,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 // import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import LoginIcon from '@mui/icons-material/Login';
-// import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { navAnimation } from '../animations/navbar';
 
 const pages = ['Register', 'Login'];
