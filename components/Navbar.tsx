@@ -94,8 +94,8 @@ const Navbar = () => {
                       <Typography color="black" textAlign="center">
                         {page}
                       </Typography>
-                      {index === 1 && <LoginIcon />}
-                      {index === 0  && <PersonAddAltIcon />}
+                      {/* {index === 1 && <LoginIcon />}
+                      {index === 0  && <PersonAddAltIcon />} */}
                     </Box>
                   </Link>
                 </MenuItem>
@@ -112,8 +112,8 @@ const Navbar = () => {
                 <Link passHref href={page.toLowerCase()}>
                   <Box component="a" sx={{display: "flex", alignItems:"center"}} >
                     <Typography fontWeight="600">{page}</Typography>
-                    {index === 1 && <LoginIcon />}
-                    {index === 0  && <PersonAddAltIcon />}
+                    {/* {index === 1 && <LoginIcon />}
+                    {index === 0  && <PersonAddAltIcon />} */}
                   </Box>
                 </Link>
               </Button>
