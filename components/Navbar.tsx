@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, MutableRefObject, MouseEvent, FC, useRef, useEffect } from 'react';
 import Link from 'next/link'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,18 +14,24 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import LoginIcon from '@mui/icons-material/Login';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+import { navAnimation } from '../animations/navbar';
 
 const pages = ['Register', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const Navbar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+interface Props {
+  ref: MutableRefObject<HTMLDivElement| null>
+}
 
-  const handleOpenNavMenu = (event : React.MouseEvent<HTMLElement>) => {
+const Navbar = () => {
+  const navRef = useRef(null)
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+  const handleOpenNavMenu = (event : MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event : React.MouseEvent<HTMLElement>) => {
+  // const handleOpenUserMenu = (event : MouseEvent<HTMLElement>) => {
   //   setAnchorElUser(event.currentTarget);
   // };
 
@@ -37,8 +43,12 @@ const Navbar = () => {
   //   setAnchorElUser(null);
   // };
 
+  useEffect(() => {
+    navAnimation(navRef.current)
+  }, [])
+
   return (
-    <AppBar sx={{background: "transparent", color: "black", boxShadow: "none", height: "10vh"}} position="static">
+    <AppBar ref={navRef} sx={{background: "transparent", color: "black", boxShadow: "none", height: "10vh"}} position="static">
         <Toolbar sx={{justifyContent: "space-between"}} disableGutters>
           <Typography
             variant="h6"
