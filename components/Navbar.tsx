@@ -1,4 +1,4 @@
-import { useState, MutableRefObject, MouseEvent, FC, useRef, useEffect } from 'react';
+import { useState, MouseEvent, useRef, useEffect } from 'react';
 import Link from 'next/link'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,16 +12,12 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 // import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import LoginIcon from '@mui/icons-material/Login';
-import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
+// import LoginIcon from '@mui/icons-material/Login';
+// import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import { navAnimation } from '../animations/navbar';
 
 const pages = ['Register', 'Login'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-interface Props {
-  ref: MutableRefObject<HTMLDivElement| null>
-}
+const settings = ['Biodata', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
   const navRef = useRef(null)
@@ -104,8 +100,6 @@ const Navbar = () => {
                       <Typography color="black" textAlign="center">
                         {page}
                       </Typography>
-                      {/* {index === 1 && <LoginIcon />}
-                      {index === 0  && <PersonAddAltIcon />} */}
                     </Box>
                   </Link>
                 </MenuItem>
@@ -122,8 +116,6 @@ const Navbar = () => {
                 <Link passHref href={page.toLowerCase()}>
                   <Box component="a" sx={{display: "flex", alignItems:"center"}} >
                     <Typography fontWeight="600">{page}</Typography>
-                    {/* {index === 1 && <LoginIcon />}
-                    {index === 0  && <PersonAddAltIcon />} */}
                   </Box>
                 </Link>
               </Button>
