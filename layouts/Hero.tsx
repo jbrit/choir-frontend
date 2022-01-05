@@ -14,10 +14,11 @@ export default function Hero() {
   const headingRef = useRef<MutableRefObject<null>[] | null[]>([null, null, null])
   const subtitleRef = useRef(null)
   const buttonRef = useRef(null)
+  const boxRef = useRef<MutableRefObject<null>[] | null[]>([null, null, null])
   const imageRef = useRef<MutableRefObject<null>[] | null[]>([null, null, null])
 
   useEffect(() => {
-    heroAnimation(headingRef.current, subtitleRef.current, imageRef.current, buttonRef.current)
+    heroAnimation(headingRef.current, subtitleRef.current, boxRef.current, buttonRef.current, imageRef.current)
   }, [])
 
   return (
@@ -52,17 +53,17 @@ export default function Hero() {
         </Grid>
         <Grid item xs={12} md={6}>
             <Grid sx={{justifyContent :"space-between", alignItems: "center"}} container spacing={1}>
-              <Grid sx={{height: {xs: "300px", sm: "500px"}, position: "relative"}} item xs={4}>
-                <Box className="imgAnim" component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir1.jpg" alt="" />
-                <Box ref={(element : MutableRefObject<null>| null) => {imageRef.current[0] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
+              <Grid sx={{height: {xs: "300px", sm: "500px"}, position: "relative", overflow: "hidden"}} item xs={4}>
+                <Box  ref={(element : MutableRefObject<null>| null) => {imageRef.current[0] = element;}} component="img" sx={{height: "100%",width: "100%", objectFit: "cover", transform:"scale(1.06)"}} src="/choir1.jpg" alt="" />
+                <Box ref={(element : MutableRefObject<null>| null) => {boxRef.current[0] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
               </Grid>
-              <Grid sx={{height: {xs: "250px", sm: "450px", position: "relative"}}} item xs={4}>
-                <Box className="imgAnim" component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir2.jpg" alt="" />
-                <Box ref={(element : MutableRefObject<null>| null) => {imageRef.current[1] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
+              <Grid sx={{height: {xs: "250px", sm: "450px", position: "relative", overflow: "hidden"}}} item xs={4}>
+                <Box  ref={(element : MutableRefObject<null>| null) => {imageRef.current[1] = element;}} component="img" sx={{height: "100%",width: "100%", objectFit: "cover", transform:"scale(1.06)"}} src="/choir2.jpg" alt="" />
+                <Box ref={(element : MutableRefObject<null>| null) => {boxRef.current[1] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
               </Grid>
-              <Grid sx={{height: {xs: "200px", sm: "400px", position: "relative"}}} item xs={4}>
-                <Box className="imgAnim" component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir3.jpg" alt="" />
-                <Box ref={(element : MutableRefObject<null>| null) => {imageRef.current[2] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
+              <Grid sx={{height: {xs: "200px", sm: "400px", position: "relative", overflow: "hidden"}}} item xs={4}>
+                <Box  ref={(element : MutableRefObject<null>| null) => {imageRef.current[2] = element;}} component="img" sx={{height: "100%",width: "100%", objectFit: "cover", transform:"scale(1.06)"}} src="/choir3.jpg" alt="" />
+                <Box ref={(element : MutableRefObject<null>| null) => {boxRef.current[2] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
               </Grid>
             </Grid>
         </Grid>

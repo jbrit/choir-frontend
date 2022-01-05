@@ -1,15 +1,11 @@
 import gsap from "gsap"
-// import { CustomEase } from "gsap/all";
 
-// const heroEase = CustomEase.create(  "custom", "M0,0 C0.482,0 0.447,0.143 0.49,0.252 0.556,0.42 0.458,1 1,1 ")
-
-export const heroAnimation = (headingEl : gsap.TweenTarget, subtitleEl : gsap.TweenTarget, imageEl : gsap.TweenTarget, buttonEl : gsap.TweenTarget) => {
+export const heroAnimation = (headingEl : gsap.TweenTarget, subtitleEl : gsap.TweenTarget, boxEl : gsap.TweenTarget, buttonEl : gsap.TweenTarget, imageEl : gsap.TweenTarget) => {
   const heroTl = gsap.timeline({});
   heroTl.fromTo(headingEl,
     {
       y: 80,
       skewY: 10
-      // ease: heroEase,
     },
     {
       stagger: 0.3,
@@ -20,7 +16,6 @@ export const heroAnimation = (headingEl : gsap.TweenTarget, subtitleEl : gsap.Tw
     {
       y: 80,
       skewY: 5
-      // ease: heroEase,
     },
     {
       duraton: 0.3,
@@ -36,9 +31,12 @@ export const heroAnimation = (headingEl : gsap.TweenTarget, subtitleEl : gsap.Tw
       duration: 0.4
     }
   )
-  .to(imageEl, {
+  .to(boxEl, {
       stagger: 0.4,
       height: 0,
-      // ease: heroEase
   })
+  .to(imageEl, {
+      stagger: 0.4,
+      scale: 1,
+  }, "-=1.1")
 }
