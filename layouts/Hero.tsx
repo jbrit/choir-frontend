@@ -30,14 +30,14 @@ export default function Hero() {
         </Stack>
         </Grid>
         <Grid item xs={12} md={6}>
-            <Grid sx={{justifyContent :"space-between", alignItems: "center"}} container spacing={2}>
-              <Grid sx={{height:"500px"}} item xs={4}>
+            <Grid sx={{justifyContent :"space-between", alignItems: "center"}} container spacing={1}>
+              <Grid sx={{height: {xs: "300px", sm: "500px"}}} item xs={4}>
                 <Box component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir1.jpg" alt="" />
               </Grid>
-              <Grid sx={{height:"450px"}} item xs={4}>
+              <Grid sx={{height: {xs: "250px", sm: "450px"}}} item xs={4}>
                 <Box component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir2.jpg" alt="" />
               </Grid>
-              <Grid sx={{height:"400px"}} item xs={4}>
+              <Grid sx={{height: {xs: "200px", sm: "400px"}}} item xs={4}>
                 <Box component="img" sx={{height: "100%",width: "100%", objectFit: "cover"}} src="/choir3.jpg" alt="" />
               </Grid>
             </Grid>
