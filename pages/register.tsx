@@ -13,13 +13,13 @@ const Register: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
-        <Grid item xs={12} md={4}>
-          <Box component='div' sx={{backgroundColor: "primary", width: "100%", minHeight: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
-            z
+        <Grid item xs={12} md={6} lg={5}>
+          <Box component='div' px={9} sx={{width: "100%", minHeight: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            
           </Box>
         </Grid>
-        <Grid item xs={12} md={8}>
-
+        <Grid item xs={12} md={6} lg={7}>
+          <Box component='div' sx={{backgroundImage: 'url(./choir1.jpg)', width: "100%", minHeight: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}} ></Box>
         </Grid>
       </Grid>
     </div>
