@@ -106,7 +106,7 @@ const Navbar = () => {
               >
                 <Link passHref href={page.toLowerCase()}>
                   <Box component="a" sx={{display: "flex", alignItems:"center"}} >
-                    <Typography fontWeight="600">{page}</Typography>
+                    <Typography fontWeight="600">{page.substring(1)}</Typography>
                   </Box>
                 </Link>
               </Button>
