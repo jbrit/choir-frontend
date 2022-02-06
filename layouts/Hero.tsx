@@ -49,9 +49,9 @@ export default function Hero() {
         </Grid>
         <Grid item xs={12} md={6}>
             <Grid sx={{justifyContent :"space-between", alignItems: "center"}} container spacing={1}>
-              {heroImages.map(({height}, index) => (
+              {heroImages.map(({height, src}, index) => (
                 <Grid key={height} sx={{height: {xs: `${height - 200}px`, sm: `${height}px`}, position: "relative", overflow: "hidden"}} item xs={4}>
-                  <Box ref={(element : MutableRefObject<null>| null) => {imageRef.current[index] = element;}} component="img" sx={{height: "100%",width: "100%", objectFit: "cover", transform:"scale(1.06)"}} src={`/choir${index + 1}.jpg`} alt="" />
+                  <Box ref={(element : MutableRefObject<null>| null) => {imageRef.current[index] = element;}} component="img" sx={{height: "100%",width: "100%", objectFit: "cover", transform:"scale(1.06)"}} src={src} alt="" />
                   <Box ref={(element : MutableRefObject<null>| null) => {boxRef.current[index] = element;}} component="div" position="absolute" sx={{height: "100%",width: "100%", backgroundColor: "white", top: 0, left: 0}}></Box>
               </Grid>
               ))}
