@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import * as React from 'react';
+import Image from 'next/image'
 import Link from 'next/link'
 import Head from "next/head";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -16,6 +18,8 @@ interface Values {
 }
 
 const Register: NextPage = () => {
+  const matches1366 = useMediaQuery('(min-width:1366px)');
+  const matches496 = useMediaQuery('(max-width:496px)');
   return (
     <div>
       <Head>
@@ -23,7 +27,8 @@ const Register: NextPage = () => {
         <meta name="description" content="Tabernacle of Psalms, Choir Page" />
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
-        <Grid item xs={12} md={6} lg={5} sx={{alignItems: "center"}}>
+        <Grid item xs={12} md={6} lg={5} py={4} px={matches496 ? 2 : matches1366 ? 8 : 4} sx={{alignItems: "center"}}>
+            {/* <Image src="/Horizontal Logo Full Color.svg" width={} height={} alt="" /> */}
             <Formik
               initialValues={{
                 email: '',
@@ -60,7 +65,7 @@ const Register: NextPage = () => {
             >
               {({ submitForm, isSubmitting }) => (
                 <Form>
-                  <Box component='div' py={4} px={8} sx={{width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", boxSizing: "border-box"}}>
+                  <Box component='div' sx={{width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", boxSizing: "border-box"}}>
                   <Typography lineHeight={1} color="primary" variant="h2" component="h1" mb={8} sx={{alignSelf: 'flex-start'}} gutterBottom>Register an account</Typography>
                   <Field
                     component={TextField}
@@ -117,7 +122,7 @@ const Register: NextPage = () => {
             </Formik>
         </Grid>
         <Grid item xs={0} md={6} lg={7}>
-          <Box component='div' sx={{backgroundImage: 'url(./choir1.jpg)', width: "100%", minHeight: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", position: "relative", display: "flex", alignItems: "center"}} >
+          <Box component='div' sx={{backgroundImage: 'url(./choir-register.jpg)', width: "100%", minHeight: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", position: "relative", display: "flex", alignItems: "center"}} >
             <Box component='div' sx={{position: "absolute", top: 0, left: 0, bgcolor: 'primary.main', opacity: 0.4, width: "100%", minHeight: "100%"}} ></Box>
           </Box>
         </Grid>
