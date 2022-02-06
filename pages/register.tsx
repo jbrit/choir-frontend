@@ -28,9 +28,11 @@ const Register: NextPage = () => {
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
         <Grid item xs={12} md={6} lg={5} py={4} px={matches496 ? 2 : matches1366 ? 8 : 4} sx={{alignItems: "center"}}>
-          <Box sx={{position: "relative", width: "187px", height: "70px"}}>
-            <Image src="https://res.cloudinary.com/dexg5uy3d/image/upload/v1644113020/HorizontalLogo_FullColor_y1calj.png" objectFit="cover" layout="fill" alt="" />
-          </Box>
+          <Link passHref href='/'>
+            <Box component="a" sx={{position: "relative", width: "187px", height: "70px", display: "block"}} >
+              <Image src="https://res.cloudinary.com/dexg5uy3d/image/upload/v1644113020/HorizontalLogo_FullColor_y1calj.png" objectFit="cover" layout="fill" alt="" />
+            </Box>
+          </Link>
             <Formik
               initialValues={{
                 email: '',
