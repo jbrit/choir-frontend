@@ -12,6 +12,7 @@ import { TextField } from 'formik-mui';
 interface Values {
   email: string;
   password: string;
+  confirmpassword: string;
 }
 
 const Register: NextPage = () => {
@@ -29,6 +30,7 @@ const Register: NextPage = () => {
               initialValues={{
                 email: '',
                 password: '',
+                confirmpassword: ''
               }}
               validate={(values) => {
                 const errors: Partial<Values> = {};
@@ -41,6 +43,12 @@ const Register: NextPage = () => {
                 }
                 if (!values.password) {
                   errors.password = 'Required';
+                }
+                if (!values.confirmpassword) {
+                  errors.confirmpassword = 'Required';
+                }
+                if (values.password !== values.confirmpassword) {
+                  errors.confirmpassword = 'Passwords must match';
                 }
                 return errors;
               }}
@@ -71,6 +79,22 @@ const Register: NextPage = () => {
                     name="password"
                     sx={{width: "100%", marginBottom: "20px"}}
                   />
+                  <br />
+                  <Field
+                    component={TextField}
+                    type="password"
+                    label="Confirm Password"
+                    name="confirmpassword"
+                    sx={{width: "100%", marginBottom: "20px"}}
+                  />
+                  <br />
+                  <Link passHref href='/forgot-password'>
+                    <Box component="a" sx={{alignSelf:"items-start"}} >
+                      <Typography color="primary">
+                        Forgot your password?
+                      </Typography>
+                    </Box>
+                  </Link>
                   {isSubmitting && <LinearProgress />}
                   <br />
                   <Button
@@ -78,14 +102,14 @@ const Register: NextPage = () => {
                     color="primary"
                     disabled={isSubmitting}
                     onClick={submitForm}
-                    sx={{width: "100%"}}
+                    sx={{width: "100%", padding: '15px 5px'}}
                   >
                     Sign up
                   </Button>
                   <Link passHref href='/login'>
                     <Box component="a" sx={{alignSelf:"items-start"}} >
-                      <Typography mt={6} color="black">
-                        Already have an account? Login here
+                      <Typography mt={3} color="black">
+                        Already have an account? Sign in
                       </Typography>
                     </Box>
                   </Link>
