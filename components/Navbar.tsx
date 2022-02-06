@@ -1,10 +1,11 @@
 import { useState, MouseEvent, useRef, useEffect } from 'react';
 import Link from 'next/link'
+import Image from 'next/image'
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 // import Avatar from '@mui/material/Avatar';
@@ -43,23 +44,16 @@ const Navbar = () => {
   return (
     <AppBar ref={navRef} sx={{background: "transparent", color: "black", boxShadow: "none", height: "10vh"}} position="static">
         <Toolbar sx={{justifyContent: "space-between"}} disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
-            LOGO
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            LOGO
-          </Typography>
-
+          <Link passHref href='/'>
+            <Box component="a" sx={{position: "relative", width: "187px", height: "70px", mr: 1, mt: 4, display: { xs: 'none', md: 'block' }}} >
+              <Image src="https://res.cloudinary.com/dexg5uy3d/image/upload/v1644113020/HorizontalLogo_FullColor_y1calj.png" objectFit="cover" objectPosition="center" layout="fill" alt="" />
+            </Box>
+          </Link>
+          <Link passHref href='/'>
+            <Box component="a" sx={{position: "relative", width: "187px", height: "70px", mt: 1, display: { xs: 'block', md: 'none'}}} >
+              <Image src="https://res.cloudinary.com/dexg5uy3d/image/upload/v1644113020/HorizontalLogo_FullColor_y1calj.png" objectFit="cover" objectPosition="center" layout="fill" alt="" />
+            </Box>
+          </Link>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
