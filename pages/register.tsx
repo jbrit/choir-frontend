@@ -1,10 +1,8 @@
 import type { NextPage } from "next";
 import * as React from 'react';
-import Image from 'next/image'
 import Link from 'next/link'
 import Head from "next/head";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button, LinearProgress } from '@mui/material';
