@@ -21,11 +21,9 @@ const Register: NextPage = () => {
       <Head>
         <title>Register | Tabernacle of Psalms</title>
         <meta name="description" content="Tabernacle of Psalms, Choir Page" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
         <Grid item xs={12} md={6} lg={5} sx={{alignItems: "center"}}>
-          {/* <Box component='div' py={4} sx={{width: "100%", minHeight: "100%", display: "flex", alignItems: "center"}}> */}
             <Formik
               initialValues={{
                 email: '',
@@ -117,10 +115,9 @@ const Register: NextPage = () => {
                 </Form>
               )}
             </Formik>
-          {/* </Box> */}
         </Grid>
         <Grid item xs={0} md={6} lg={7}>
-          <Box component='div' sx={{backgroundImage: 'url(./choir1.jpg)', width: "100%", minHeight: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", position: "relative"}} >
+          <Box component='div' sx={{backgroundImage: 'url(./choir1.jpg)', width: "100%", minHeight: "100%", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center", position: "relative", display: "flex", alignItems: "center"}} >
             <Box component='div' sx={{position: "absolute", top: 0, left: 0, bgcolor: 'primary.main', opacity: 0.4, width: "100%", minHeight: "100%"}} ></Box>
           </Box>
         </Grid>
