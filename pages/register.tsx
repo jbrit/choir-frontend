@@ -70,7 +70,8 @@ const Register: NextPage = () => {
               {({ submitForm, isSubmitting }) => (
                 <Form>
                   <Box component='div' sx={{width: "100%", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", boxSizing: "border-box", minHeight: "calc(100vh - 150px)"}}>
-                  <Typography lineHeight={1} color="primary" variant="h2" component="h1" mb={8} sx={{alignSelf: 'flex-start'}} gutterBottom>Register an account</Typography>
+                  <Typography lineHeight={1} color="primary" variant="h2" component="h1" mb={1} gutterBottom>Register an account</Typography>
+                  <Typography lineHeight={1} color="black" variant="body1" component="p" mb={8} gutterBottom>Sign up to manage your choir activities</Typography>
                   <Field
                     component={TextField}
                     name="email"
