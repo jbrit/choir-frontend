@@ -28,7 +28,9 @@ const Register: NextPage = () => {
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
         <Grid item xs={12} md={6} lg={5} py={4} px={matches496 ? 2 : matches1366 ? 8 : 4} sx={{alignItems: "center"}}>
-            <Image src="/VerticalLogoFullColor.png" width="100" height="100" objectFit="cover" alt="" />
+          <Box sx={{position: "relative", width: "187px", height: "70px"}}>
+            <Image src="/HorizontalLogo FullColor.png" objectFit="cover" layout="fill" alt="" />
+          </Box>
             <Formik
               initialValues={{
                 email: '',
@@ -65,7 +67,7 @@ const Register: NextPage = () => {
             >
               {({ submitForm, isSubmitting }) => (
                 <Form>
-                  <Box component='div' sx={{width: "100%", minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", boxSizing: "border-box"}}>
+                  <Box component='div' sx={{width: "100%", display: "flex", flexDirection: "column", alignItems: "flex-start", justifyContent: "center", boxSizing: "border-box", minHeight: "calc(100vh - 150px)"}}>
                   <Typography lineHeight={1} color="primary" variant="h2" component="h1" mb={8} sx={{alignSelf: 'flex-start'}} gutterBottom>Register an account</Typography>
                   <Field
                     component={TextField}
