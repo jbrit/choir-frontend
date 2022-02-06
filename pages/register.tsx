@@ -29,7 +29,7 @@ const Register: NextPage = () => {
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
         <Grid item xs={12} md={6} lg={5} py={4} px={matches496 ? 2 : matches1366 ? 8 : 4} sx={{alignItems: "center"}}>
           <Box sx={{position: "relative", width: "187px", height: "70px"}}>
-            <Image src="/HorizontalLogo FullColor.png" objectFit="cover" layout="fill" alt="" />
+            <Image src="https://res.cloudinary.com/dexg5uy3d/image/upload/v1644112543/choir-register_rwgvxe.jpg" objectFit="cover" layout="fill" alt="" />
           </Box>
             <Formik
               initialValues={{
