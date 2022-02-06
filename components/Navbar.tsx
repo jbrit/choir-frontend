@@ -13,7 +13,7 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { navAnimation } from '../animations/navbar';
 
-const pages = ['register', 'login'];
+const pages = ['/register', '/login'];
 const settings = ['Biodata', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
