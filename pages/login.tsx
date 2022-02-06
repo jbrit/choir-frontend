@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import * as React from 'react';
 import Link from 'next/link'
 import Head from "next/head";
-import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Button, LinearProgress } from '@mui/material';
@@ -16,8 +15,6 @@ interface Values {
 }
 
 const Login: NextPage = () => {
-  const matches1366 = useMediaQuery('(min-width:1366px)');
-  const matches496 = useMediaQuery('(max-width:496px)');
   return (
     <div>
       <Head>
