@@ -28,7 +28,7 @@ const Register: NextPage = () => {
       </Head>
       <Grid sx={{minHeight: "100vh"}} container spacing={0}>
         <Grid item xs={12} md={6} lg={5} py={4} px={matches496 ? 2 : matches1366 ? 8 : 4} sx={{alignItems: "center"}}>
-            {/* <Image src="/Horizontal Logo Full Color.svg" width={} height={} alt="" /> */}
+            <Image src="/VerticalLogoFullColor.png" width="100" height="100" objectFit="cover" alt="" />
             <Formik
               initialValues={{
                 email: '',
