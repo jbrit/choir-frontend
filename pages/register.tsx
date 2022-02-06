@@ -88,16 +88,9 @@ const Register: NextPage = () => {
                     type="password"
                     label="Confirm Password"
                     name="confirmpassword"
-                    sx={{width: "100%", marginBottom: "20px"}}
+                    sx={{width: "100%"}}
                   />
                   <br />
-                  <Link passHref href='/forgot-password'>
-                    <Box component="a" sx={{alignSelf:"items-start"}} >
-                      <Typography color="primary">
-                        Forgot your password?
-                      </Typography>
-                    </Box>
-                  </Link>
                   {isSubmitting && <LinearProgress />}
                   <br />
                   <Button
