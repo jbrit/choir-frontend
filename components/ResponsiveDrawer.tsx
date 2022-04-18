@@ -58,18 +58,18 @@ const ResponsiveDrawer = ({children, page}: Props) => {
       <Divider />
       <List sx={{padding: "40px 0"}}>
         {['Biodata', 'Rehearsals', 'Songs'].map((text, index) => (
-          <ListItem sx={{marginBottom: `${index === 2 ? '' : '20px' }`}} button key={text}>
-            <ListItemIcon>
-              {index === 0 ? <PersonOutlineIcon color={`${page === text ? 'primary' : 'inherit' }`} /> : index === 1 ? <ChurchIcon color={`${page === text ? 'primary' : 'inherit' }`} /> : <LibraryMusicIcon color={`${page === text ? 'primary' : 'inherit' }`} />}
-            </ListItemIcon>
-            <Link passHref href={`/dashboard/${text.toLowerCase()}`}>
-              <Box component="a" sx={{display: "flex", alignItems:"center"}} >
-                  <Typography color={`${page === text ? 'primary' : 'black' }`} textAlign="center">
-                    {text}
-                  </Typography>
-              </Box>
-            </Link>
-          </ListItem>
+          <Link key={text} passHref href={`/dashboard/${text.toLowerCase()}`}>
+            <Box component="a" sx={{display: "flex", alignItems:"center"}} >
+            <ListItem sx={{marginBottom: `${index === 2 ? '' : '20px' }`}} button > 
+                <ListItemIcon>
+                  {index === 0 ? <PersonOutlineIcon color={`${page === text ? 'primary' : 'inherit' }`} /> : index === 1 ? <ChurchIcon color={`${page === text ? 'primary' : 'inherit' }`} /> : <LibraryMusicIcon color={`${page === text ? 'primary' : 'inherit' }`} />}
+                </ListItemIcon>  
+                <Typography color={`${page === text ? 'primary' : 'black' }`} textAlign="center">
+                  {text}
+                </Typography>
+            </ListItem>
+          </Box>
+          </Link>
         ))}
       </List>
       <Divider />
