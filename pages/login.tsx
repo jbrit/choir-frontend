@@ -44,18 +44,14 @@ const Login: NextPage = () => {
             return errors;
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values);
+            setSubmitting(true);
             try {
               const res = await login(values.email, values.password);
               console.log(res);
             } catch (error) {
               console.log((error as AxiosError).response)
             }
-            setTimeout(() => {
-              setSubmitting(true);
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 500);
+            setSubmitting(false);
           }}
         >
           {({ submitForm, isSubmitting }) => (
@@ -95,7 +91,7 @@ const Login: NextPage = () => {
                   onClick={submitForm}
                   sx={{ width: "100%", padding: '15px 5px' }}
                 >
-                  Login
+                  {!isSubmitting ? "Login" : "Logging in..."}
                 </Button>
                 <Link passHref href='/register'>
                   <Box component="a" sx={{ alignSelf: "items-start" }} >

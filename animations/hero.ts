@@ -18,7 +18,7 @@ export const heroAnimation = (headingEl : gsap.TweenTarget, subtitleEl : gsap.Tw
       skewY: 5
     },
     {
-      duraton: 0.3,
+      duration: 0.3,
       y: 0,
       skewY: 0
     }
