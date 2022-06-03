@@ -9,8 +9,13 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-mui";
 import AuthPage from "../layouts/AuthPage";
 import { register } from "../actions/auth";
-import { redirectLoggedIn, ErrorResponse, getErrorMessage } from "../utils/utils";
+import {
+  redirectLoggedIn,
+  ErrorResponse,
+  getErrorMessage,
+} from "../utils/utils";
 import Swal from "sweetalert2";
+import router from "next/router";
 
 interface Values {
   name: string;
@@ -66,14 +71,19 @@ const Register: NextPage = () => {
           onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true);
             try {
-              const res = await register(
+              await register(
                 values.name,
                 parseInt(values.regNo),
                 values.email,
                 values.password,
                 values.confirmpassword
               );
-              alert("Success, check mail")
+              await Swal.fire(
+                "Successful Registration",
+                "You can now login!",
+                "success"
+              )
+              router.push("/login")
             } catch (error) {
               Swal.fire(
                 "Registration Error",
