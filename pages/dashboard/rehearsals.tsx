@@ -4,6 +4,7 @@ import BasicTabs from "../../components/BasicTab";
 import RehearsalsDataTable from "../../components/RehearsalsDataTable";
 import ResponsiveDrawer from "../../components/ResponsiveDrawer";
 import { createRehearsalData } from "../../utils";
+import { redirectLoggedOut } from "../../utils/utils";
 
 const rowsPast = [
   createRehearsalData('Youth Harvest', "28/12/2022", "8:00pm", "12:00am" , true),
@@ -17,7 +18,7 @@ const rowsOngoing = [
 
 const labelValues = ["Past", "Ongoing"]
 const tabContents = [<RehearsalsDataTable rows={rowsPast} key={0.2}/>, <RehearsalsDataTable rows={rowsOngoing}  key={0.6}/>]
-
+redirectLoggedOut()
 const Rehearsals: NextPage = () => {
   return (
     <div>

@@ -1,3 +1,4 @@
+import router from "next/router";
 import { api } from "../utils/api";
 
 type LoginResponse = {
@@ -31,6 +32,8 @@ type RegisterResponse = {
 };
 
 export async function register(
+  name: string,
+  reg_no: number,
   email: string,
   password: string,
   confirm_password: string
@@ -38,7 +41,7 @@ export async function register(
   const response = await api.request<RegisterResponse>("/register/", {
     requiresAuthentication: false,
     method: "POST",
-    body: { email, password, confirm_password },
+    body: { name, reg_no, email, password, confirm_password },
   });
   return response.data;
 }
@@ -49,12 +52,13 @@ type Biodata = {
   part: "Tenor" | "Alto" | "Soprano" | "HOD";
   department: string;
   reg_no?: number;
+  email?: string;
+  name: string;
   matric_no: string;
+  birthday: Date | null;
 };
 
-export async function fillBiodata(
-  inputData: Biodata
-): Promise<Biodata> {
+export async function fillBiodata(inputData: Biodata): Promise<Biodata> {
   const response = await api.request<Biodata>("/auth/biodata/", {
     requiresAuthentication: true,
     method: "PUT",
@@ -62,3 +66,19 @@ export async function fillBiodata(
   });
   return response.data;
 }
+
+export async function getBiodata(): Promise<Biodata> {
+  const response = await api.request<Biodata>("/auth/biodata/", {
+    requiresAuthentication: true,
+    method: "GET",
+  });
+  return response.data;
+}
+
+export const logout = async () => {
+  api.removeToken();
+  setTimeout(() => {
+    if(typeof window !== "undefined")
+    router.push("/");
+  }, 200);
+};

@@ -8,37 +8,34 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { navAnimation } from '../animations/navbar';
+import { useAuthState } from '../utils/hooks';
 
-const pages = ['/register', '/login'];
 const settings = ['Biodata', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
   const navRef = useRef(null)
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   // const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
+  
   const handleOpenNavMenu = (event : MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   // const handleOpenUserMenu = (event : MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
-
-  useEffect(() => {
-    navAnimation(navRef.current)
+    //   setAnchorElUser(event.currentTarget);
+    // };
+    
+    const handleCloseNavMenu = () => {
+      setAnchorElNav(null);
+    };
+    
+    const loggedIn = useAuthState();
+    const pages = loggedIn ? [{route: '/dashboard/biodata', name: 'dashboard'}] : [{route: '/register', name: 'register'}, {route: '/login', name: 'login'}];
+    
+    useEffect(() => {
+      navAnimation(navRef.current)
   }, [])
 
   return (
@@ -85,11 +82,11 @@ const Navbar = () => {
             >
               <Box sx={{padding: "10px 10px 10px 0"}}>
               {pages.map((page, index) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link passHref href={page.toLowerCase()}>
+                <MenuItem key={page.route} onClick={handleCloseNavMenu}>
+                  <Link passHref href={page.route.toLowerCase()}>
                     <Box component="a" sx={{display: "flex", alignItems:"center"}} >
                       <Typography color="black" textAlign="center">
-                        {page}
+                        {page.name}
                       </Typography>
                     </Box>
                   </Link>
@@ -100,48 +97,18 @@ const Navbar = () => {
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page, index) => (
-              <Button key={page}
+              <Button key={page.route}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'black', display: 'block' }}
               >
-                <Link passHref href={page.toLowerCase()}>
+                <Link passHref href={page.route.toLowerCase()}>
                   <Box component="a" sx={{display: "flex", alignItems:"center"}} >
-                    <Typography fontWeight="600">{page.substring(1)}</Typography>
+                    <Typography fontWeight="600">{page.name.substring(0)}</Typography>
                   </Box>
                 </Link>
               </Button>
             ))}
           </Box>
-
-          {/* <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box> */}
         </Toolbar>
     </AppBar>
   );

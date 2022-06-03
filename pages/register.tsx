@@ -9,16 +9,19 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-mui";
 import AuthPage from "../layouts/AuthPage";
 import { register } from "../actions/auth";
-import { AxiosError } from "axios";
+import { redirectLoggedIn, ErrorResponse, getErrorMessage } from "../utils/utils";
+import Swal from "sweetalert2";
 
 interface Values {
+  name: string;
   email: string;
-  regNo: string;
+  regNo: number | string;
   password: string;
   confirmpassword: string;
 }
 
 const Register: NextPage = () => {
+  redirectLoggedIn();
   return (
     <div>
       <Head>
@@ -30,6 +33,7 @@ const Register: NextPage = () => {
           initialValues={{
             email: "",
             regNo: "",
+            name: "",
             password: "",
             confirmpassword: "",
           }}
@@ -63,14 +67,20 @@ const Register: NextPage = () => {
             setSubmitting(true);
             try {
               const res = await register(
+                values.name,
+                parseInt(values.regNo),
                 values.email,
                 values.password,
                 values.confirmpassword
               );
               alert("Success, check mail")
             } catch (error) {
-              console.log((error as AxiosError).response);
-              alert("Error, check console")
+              Swal.fire(
+                "Registration Error",
+                getErrorMessage(error as ErrorResponse) ??
+                  "Could not register the user.",
+                "error"
+              );
             }
             setSubmitting(false);
           }}
@@ -111,6 +121,14 @@ const Register: NextPage = () => {
                 </Typography>
                 <Field
                   component={TextField}
+                  name="name"
+                  type="text"
+                  label="Full Name"
+                  sx={{ width: "100%", marginBottom: "20px" }}
+                />
+                <br />
+                <Field
+                  component={TextField}
                   name="email"
                   type="email"
                   label="Email"
@@ -120,7 +138,7 @@ const Register: NextPage = () => {
                 <Field
                   component={TextField}
                   name="regNo"
-                  type="text"
+                  type="number"
                   label="Reg No. (e.g. 1800447)"
                   sx={{ width: "100%", marginBottom: "20px" }}
                 />
