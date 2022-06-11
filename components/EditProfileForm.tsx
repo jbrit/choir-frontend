@@ -79,8 +79,13 @@ const EditProfileForm = ({
       onSubmit={async (values, { setSubmitting }) => {
         setSubmitting(true);
         const valuesToSubmit = {
-          ...values,
+          level: values.level,
+          department: values.department,
+          part: (values as Biodata).part,
+          matric_no: values.matric_no,
           birthday: moment(values.birthday).format("YYYY-MM-DD"),
+          gender: (values as Biodata).gender,
+          name: values.name,
         };
         try {
           await fillBiodata(valuesToSubmit as Biodata);
