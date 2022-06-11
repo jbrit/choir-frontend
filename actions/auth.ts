@@ -46,7 +46,7 @@ export async function register(
   return response.data;
 }
 
-type Biodata = {
+export type Biodata = {
   gender: "Male" | "Female" | "Others";
   level: "100" | "200" | "300" | "400" | "500";
   part: "Tenor" | "Alto" | "Soprano" | "HOD";
@@ -55,7 +55,7 @@ type Biodata = {
   email?: string;
   name: string;
   matric_no: string;
-  birthday: Date | null;
+  birthday: Date | string | null;
 };
 
 export async function fillBiodata(inputData: Biodata): Promise<Biodata> {

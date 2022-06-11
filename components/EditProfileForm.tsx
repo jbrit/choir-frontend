@@ -1,14 +1,18 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import { Button, LinearProgress } from "@mui/material";
+import { Alert, Button, LinearProgress } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import MTextField from "@mui/material/TextField";
 import { TextField, Select } from "formik-mui";
 import { useQuery } from "react-query";
-import { getBiodata } from "../actions/auth";
+import { fillBiodata, getBiodata, Biodata } from "../actions/auth";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { getErrorMessage, ErrorResponse } from "../utils/utils";
+import moment from "moment";
+import Swal from "sweetalert2";
+// import { Snackbar } from "@mui/material";
 
 const EditProfileForm = ({
   setOpen,
@@ -16,7 +20,22 @@ const EditProfileForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const biodataQuery = useQuery("biodata", getBiodata);
-  const [dob, setDob] = React.useState<Date | null>(null);
+
+  // const [openModal, setOpenModal] = React.useState(true);
+  // const handleClick = () => {
+  //   setOpenModal(true);
+  // };
+  // const handleClose = (
+  //   event?: React.SyntheticEvent | Event,
+  //   reason?: string
+  // ) => {
+  //   setOpenModal(false);
+  // };
+  // <Snackbar open={openModal} autoHideDuration={6000} message="This is a message">
+  //   <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+  //     This is a success message!
+  //   </Alert>
+  // </Snackbar>;
 
   return (
     <Formik
@@ -57,12 +76,27 @@ const EditProfileForm = ({
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          setSubmitting(true);
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 500);
+      onSubmit={async (values, { setSubmitting }) => {
+        setSubmitting(true);
+        const valuesToSubmit = {
+          ...values,
+          birthday: moment(values.birthday).format("YYYY-MM-DD"),
+        };
+        try {
+          await fillBiodata(valuesToSubmit as Biodata);
+          await biodataQuery.refetch();
+          setOpen(false);
+          Swal.fire("Success", "Biodata updated successfully!", "success");
+        } catch (error) {
+          setOpen(false);
+          Swal.fire(
+            "Biodata Error",
+            getErrorMessage(error as ErrorResponse) ??
+              "Could not fill biodata form",
+            "error"
+          );
+        }
+        setSubmitting(false);
       }}
     >
       {({ submitForm, isSubmitting, values, setFieldValue, validateField }) => (

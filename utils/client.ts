@@ -48,6 +48,10 @@ async function responseInterceptor(
     await api.removeToken();
     (error as InterceptedError)._shouldExit = true;
     return Promise.reject(error);
+  } else if (originalRequest._refresh) {
+    console.log("Refresh token expired");
+    await api.removeToken();
+    (error as InterceptedError)._shouldExit = true;
   }
 
   return Promise.reject(error);

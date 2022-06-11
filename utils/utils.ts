@@ -39,14 +39,30 @@ export const redirectLoggedIn = () =>
   typeof window !== "undefined" &&
   api.getToken().then(() => router.push("/dashboard/biodata"));
 
+type ErrorOrArray = string | { [key: string]: string[] };
 export type ErrorResponse = {
-  response?: { data?: { message?: string | { [key: string]: string[] } } };
+  response?: { data?: ErrorOrArray | { message?: ErrorOrArray } };
 };
 
 export const getErrorMessage = (err: ErrorResponse): string => {
-  const message = err.response?.data?.message;
-  if (!message) return "";
-  if (typeof message == "string") return message;
-  const keys = Object.keys(message);
-  return message[keys[0]][0];
+  if (
+    typeof err.response === "undefined" ||
+    typeof err.response.data === "undefined"
+  ) {
+    return "Something went wrong";
+  }
+  if (typeof err.response.data == "string") {
+    return err.response.data;
+  } else if (typeof err.response.data.message === "undefined") {
+    const data = err.response.data as { [key: string]: string[] };
+    const keys = Object.keys(data);
+    return data[keys[0]][0];
+  } else if (typeof err.response.data.message === "string") {
+    return err.response.data.message;
+  } else if (typeof err.response.data.message === "object") {
+    const data = err.response.data.message as { [key: string]: string[] };
+    const keys = Object.keys(data);
+    return data[keys[0]][0];
+  }
+  return "Something went wrong";
 };
