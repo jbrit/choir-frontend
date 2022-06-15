@@ -7,15 +7,16 @@ import Typography from '@mui/material/Typography';
 
 const style = {
   position: 'absolute' as 'absolute',
-  top: '50%',
+  top: '0%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
+  transform: 'translate(-50%, 0%)',
   maxWidth: 600,
   width: "90%",
   bgcolor: 'background.paper',
   boxShadow: 24,
   px: {xs: 2, md: 6},
-  py: {xs: 2, md: 8}
+  py: {xs: 2, md: 8},
+  overflow: "scroll"
 };
 
 interface Props {
@@ -40,6 +41,7 @@ export default function BasicModal({open, setOpen, children, title} : Props) {
         BackdropProps={{
           timeout: 500,
         }}
+        style={{overflow: "scroll"}}
       >
         <Fade in={open}>
           <Box sx={style}>

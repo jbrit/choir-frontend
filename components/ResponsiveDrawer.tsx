@@ -79,7 +79,7 @@ const ResponsiveDrawer = ({ children, page }: Props) => {
       <Divider />
       <List sx={{ padding: "40px 0" }}>
         {/* ["Biodata", "Rehearsals", "Songs"] */}
-        {["Biodata"].map((text, index) => (
+        {["Biodata", "Songs"].map((text, index) => (
           <Link key={text} passHref href={`/dashboard/${text.toLowerCase()}`}>
             <Box component="a" sx={{ display: "flex", alignItems: "center" }}>
               <ListItem

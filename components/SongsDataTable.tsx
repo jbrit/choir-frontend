@@ -6,13 +6,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import SongDataRow from './SongDataRow';
-
+import Link from 'next/link';
 
 interface SongsDataTableProps {
   rows: {
     name: string;
     artist: string;
     lyrics: string;
+    link: string;
   }[]
 }
 
@@ -24,6 +25,7 @@ export default function SongsDataTable({rows} : SongsDataTableProps) {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell align="left">Artist</TableCell>
+            <TableCell align="left">Link</TableCell>
             <TableCell align="left">Lyrics</TableCell>
           </TableRow>
         </TableHead>
@@ -37,7 +39,10 @@ export default function SongsDataTable({rows} : SongsDataTableProps) {
                 {row.name}
               </TableCell>
               <TableCell component="th" align="left">{row.artist}</TableCell>
-              <SongDataRow lyrics={row.lyrics} />
+              <TableCell component="th" align="left">
+                <Link href={row.link}><a href={row.link} target="_blank">Check Song</a></Link>
+              </TableCell>
+              <SongDataRow  song={row.name} lyrics={row.lyrics} />
             </TableRow>
           ))}
         </TableBody>

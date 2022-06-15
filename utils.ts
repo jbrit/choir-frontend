@@ -1,17 +1,18 @@
+import { Song } from "./actions/songs";
+
 export function createRehearsalData(
   name: string,
   date: string,
   startTime: string,
   endTime: string,
-  attended: boolean,
+  attended: boolean
 ) {
-  return { name, date, startTime, endTime,  attended };
+  return { name, date, startTime, endTime, attended };
 }
 
-export function createSongData(
-  name: string,
-  artist: string,
-  lyrics: string
+export function createSongsData(
+  songs: Song[] | undefined,
+  category: Song["category"]
 ) {
-  return { name, artist, lyrics };
+  return songs?.filter((s) => s.category === category) ?? [];
 }

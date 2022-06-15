@@ -12,7 +12,6 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { getErrorMessage, ErrorResponse } from "../utils/utils";
 import moment from "moment";
 import Swal from "sweetalert2";
-// import { Snackbar } from "@mui/material";
 
 const EditProfileForm = ({
   setOpen,
@@ -20,22 +19,6 @@ const EditProfileForm = ({
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const biodataQuery = useQuery("biodata", getBiodata);
-
-  // const [openModal, setOpenModal] = React.useState(true);
-  // const handleClick = () => {
-  //   setOpenModal(true);
-  // };
-  // const handleClose = (
-  //   event?: React.SyntheticEvent | Event,
-  //   reason?: string
-  // ) => {
-  //   setOpenModal(false);
-  // };
-  // <Snackbar open={openModal} autoHideDuration={6000} message="This is a message">
-  //   <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-  //     This is a success message!
-  //   </Alert>
-  // </Snackbar>;
 
   return (
     <Formik
