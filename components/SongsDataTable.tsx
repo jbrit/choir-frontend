@@ -40,7 +40,7 @@ export default function SongsDataTable({rows} : SongsDataTableProps) {
               </TableCell>
               <TableCell component="th" align="left">{row.artist}</TableCell>
               <TableCell component="th" align="left">
-                <Link href={row.link}><a href={row.link} target="_blank">Check Song</a></Link>
+                <Link href={row.link}><a href={row.link} target="_blank" rel="noreferrer">Check Song</a></Link>
               </TableCell>
               <SongDataRow  song={row.name} lyrics={row.lyrics} />
             </TableRow>
